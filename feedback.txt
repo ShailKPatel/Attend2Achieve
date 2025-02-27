@@ -1,2 +1,5 @@
-hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
-hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+"Could you add a dark mode option? That would be awesome!"
+"The feedback system works smoothly. No issues so far."
+"It would be nice to have an option to delete feedbacks."
+"Love the minimalist design. Keep up the good work!"
+"Can we get an export feature to save feedbacks as a CSV?"
