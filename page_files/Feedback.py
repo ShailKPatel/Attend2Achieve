@@ -56,6 +56,7 @@ if feedbacks:
         cols = st.columns(min(3, num_feedbacks - i),border=True)
         for j in range(min(3, num_feedbacks - i)):
             with cols[j]:
+                st.write('✍️')
                 st.write(feedbacks[i + j])
 else:
     st.write("No feedbacks yet. Be the first to leave a feedback!")
