@@ -19,10 +19,10 @@ with st.container(border=True):
     st.page_link("page_files/Generate_Analysis.py", label="Generate Analysis", icon="📊")  
 
 with st.container(border=True):
-    "# Guide to use this app "
-    "###### Learn how to use this app and get the most out of it."
-    # User Guide Button
-    
+    "# want to provide feedback ?"
+    "###### We would love to hear from you. Please provide your feedback."
+    # Feedback Button
+    st.page_link("page_files/Feedback.py", label="Feedback", icon="💭")    
 
 with st.container(border=True):
     "# Want to know more ?"
