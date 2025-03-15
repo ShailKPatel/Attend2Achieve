@@ -68,7 +68,33 @@ with st.container(border=True):
     all_valid = institute_name and name and institute_logo
 
     # Generate Synthetic Analysis Button
-    st.page_link("page_files/Synthetic_Analysis.py", label="Generate Synthetic Analysis", icon="🌱")
+    if st.button("Generate Synthetic Analysis"):
+        st.session_state.next_btn = True
+
+        # Synthetic Data
+
+        name = "Panchal Dev"
+        institute_name = "ABC Institute"
+        institute_type = "College"
+        institute_logo = "sample_files/Institute_logo.jpg"
+        
+        num_subjects = 4
+        
+        sub1_name = "Java-1"
+        sub1_type = "Technical"
+        sub1_file = "sample_files/Sample1_Java-1.xlsx"
+        
+        sub2_name = "Software Engineering"
+        sub2_type = "Others"
+        sub2_file = "sample_files/Sample2_Software_Engineering.xlsx"
+        
+        sub3_name = "Maths-1"
+        sub3_type = "Mathematical"
+        sub3_file = "sample_files/Sample3_Maths-1.xlsx"
+        
+        sub4_name = "Environmental Science"
+        sub4_type = "Others"
+        sub4_file = "sample_files/Sample4_ES.xlsx"
 
     # Next button
     st.button(label="Next", disabled=not all_valid, icon="➡️", on_click=change_next_btn_state)  
