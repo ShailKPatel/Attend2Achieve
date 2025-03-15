@@ -67,8 +67,12 @@ with st.container(border=True):
 
     all_valid = institute_name and name and institute_logo
 
+    # Generate Synthetic Analysis Button
+    st.page_link("page_files/Synthetic_Analysis.py", label="Generate Synthetic Analysis", icon="🌱")
+
     # Next button
     st.button(label="Next", disabled=not all_valid, icon="➡️", on_click=change_next_btn_state)  
+
 
 # Subjects      
 if st.session_state.next_btn:
