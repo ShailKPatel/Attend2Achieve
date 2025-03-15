@@ -60,14 +60,7 @@ for i in range(1,num_subjects+1):
 
         st.header(f"Subject - {i}: {eval(f'sub{i}_name')}")
 
-        if eval(f"sub{i}_file").type == 'text/csv':
-            df = pd.read_csv(file)
-        elif eval(f"sub{i}_file").type == "application/vnd.ms-excel" or "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
-            df = pd.read_excel(file)
-        else:
-            st.error(f"Invalid Subject-{i} file type")
-            all_files_valid = False
-            break
+        df = pd.read_excel(file)
         
         # Display the DataFrame
         st.dataframe(df, use_container_width=True)
