@@ -28,8 +28,6 @@ if 'next_btn' not in st.session_state:
 def change_next_btn_state():
     st.session_state['next_btn'] = True
 
-synthetic_data = False
-
 #  Input fields related to Institute   
 with st.container(border=True):
     # Name
@@ -68,20 +66,6 @@ with st.container(border=True):
     num_subjects = st.slider("Number of Subjects", 1, 10,4)
 
     all_valid = institute_name and name and institute_logo
-
-    # Generate Synthetic Analysis Button
-    if st.button("Generate Synthetic Analysis", icon='🤖'):
-        st.session_state.next_btn = True
-        synthetic_data = True
-
-        # Synthetic Data
-
-        name = "Panchal Dev"
-        institute_name = "ABC Institute"
-        institute_type = "College"
-        institute_logo = "sample_files/Institute_logo.jpg"
-        
-        num_subjects = 4
 
     # Next button
     st.button(label="Next", disabled=not all_valid, icon="➡️", on_click=change_next_btn_state)  
@@ -320,26 +304,6 @@ if st.session_state.next_btn:
 
             # Subject File
             sub10_file = st.file_uploader("Upload Subject-10 File", type=["xls","xlsx"])
-
-    # If synthetic data is selected
-    if synthetic_data:
-        sub1_name = "Java-1"
-        sub1_type = "Technical"
-        sub1_file = "sample_files/Sample1_Java-1.xlsx"
-        
-        sub2_name = "Software Engineering"
-        sub2_type = "Others"
-        sub2_file = "sample_files/Sample2_Software_Engineering.xlsx"
-        
-        sub3_name = "Maths-1"
-        sub3_type = "Mathematical"
-        sub3_file = "sample_files/Sample3_Maths-1.xlsx"
-        
-        sub4_name = "Environmental Science"
-        sub4_type = "Others"
-        sub4_file = "sample_files/Sample4_ES.xlsx"
-
-        all_files_valid = True
 
     # Checking if all files are present
     all_files_present = True
