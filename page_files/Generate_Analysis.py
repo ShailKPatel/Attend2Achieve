@@ -69,7 +69,6 @@ with st.container(border=True):
 
     # Generate Synthetic Analysis Button
     if st.button("Generate Synthetic Analysis"):
-        st.session_state.next_btn = True
 
         # Synthetic Data
 
@@ -95,6 +94,8 @@ with st.container(border=True):
         sub4_name = "Environmental Science"
         sub4_type = "Others"
         sub4_file = "sample_files/Sample4_ES.xlsx"
+
+        all_files_valid = True
 
     # Next button
     st.button(label="Next", disabled=not all_valid, icon="➡️", on_click=change_next_btn_state)  
