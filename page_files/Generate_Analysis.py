@@ -381,8 +381,8 @@ if st.session_state.next_btn:
                     # Attendance vs Theory Relationship
                     if iv.has_attendance(df) and iv.has_theory(df):
                         st.subheader("Attendance - Theory Relationship")
-                        scatter = gg.generate_scatterplot_with_regression(iv.get_attendance_and_theory(df),'Attendance vs Theory Relationship')
-                        st.image(scatter)
+                        scatter_fig = gg.generate_scatterplot_with_regression(iv.get_attendance_and_theory(df),'Attendance vs Theory Relationship')
+                        st.plotly_chart(scatter_fig)
 
                         corr_attendance_theory = sa.calculate_correlations(iv.get_attendance_and_theory(df))
                         st.write(f"Correlation between Attendance & Theory: {corr_attendance_theory}")
@@ -392,8 +392,8 @@ if st.session_state.next_btn:
                     # Attendance vs Practical Relationship
                     if iv.has_attendance(df) and iv.has_practical(df):
                         st.subheader("Attendance - Practical Relationship")
-                        scatter = gg.generate_scatterplot_with_regression(iv.get_attendance_and_practical(df),'Attendance vs Practical Relationship')
-                        st.image(scatter)
+                        scatter_fig = gg.generate_scatterplot_with_regression(iv.get_attendance_and_practical(df),'Attendance vs Practical Relationship')
+                        st.plotly_chart(scatter_fig)
 
                         corr_attendance_practical = sa.calculate_correlations(iv.get_attendance_and_practical(df))
                         st.write(f"Correlation between Attendance & Practical: {corr_attendance_practical}")
@@ -402,8 +402,8 @@ if st.session_state.next_btn:
                     # Theory vs Practical Relationship
                     if iv.has_theory(df) and iv.has_practical(df):
                         st.subheader("Theory - Practical Relationship")
-                        scatter = gg.generate_scatterplot_with_regression(iv.get_theory_and_practical(df),'Theory vs Practical Relationship')
-                        st.image(scatter)
+                        scatter_fig = gg.generate_scatterplot_with_regression(iv.get_theory_and_practical(df),'Theory vs Practical Relationship')
+                        st.plotly_chart(scatter_fig)
 
                         corr_theory_practical = sa.calculate_correlations(iv.get_theory_and_practical(df))
                         st.write(f"Correlation between Theory & Practical: {corr_theory_practical}")
@@ -413,20 +413,20 @@ if st.session_state.next_btn:
                     # Attendance Histogram
                     if iv.has_attendance(df):
                         st.subheader("Attendance Histogram")
-                        histogram = gg.generate_histogram(iv.get_attendance(df),'Attendance Histogram')
-                        st.image(histogram)
+                        histogram_fig = gg.generate_histogram(iv.get_attendance(df),'Attendance Histogram')
+                        st.plotly_chart(histogram_fig)
                     
                     # Theory Histogram
                     if iv.has_theory(df):
                         st.subheader("Theory Histogram")
-                        histogram = gg.generate_histogram(iv.get_theory(df),'Theory Histogram')
-                        st.image(histogram)
+                        histogram_fig = gg.generate_histogram(iv.get_theory(df),'Theory Histogram')
+                        st.plotly_chart(histogram_fig)
                     
                     # Practical Histogram
                     if iv.has_practical(df):
                         st.subheader("Practical Histogram")
-                        histogram = gg.generate_histogram(iv.get_practical(df),'Practical Histogram')
-                        st.image(histogram)
+                        histogram_fig = gg.generate_histogram(iv.get_practical(df),'Practical Histogram')
+                        st.plotly_chart(histogram_fig)
 
                     # * Skew Analysis
                     st.subheader("Skewness Analysis")
@@ -561,9 +561,9 @@ if st.session_state.next_btn:
                     # Merge into the main DataFrame
                     merged_df = pd.concat([merged_df, first_column], axis=1)
 
-            stripplot = gg.generate_stripplots(merged_df)
+            stripplot_fig = gg.generate_stripplots(merged_df)
 
-            st.image(stripplot)
+            st.plotly_chart(stripplot_fig, use_container_width=True)
 
 
 
