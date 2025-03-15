@@ -81,6 +81,6 @@ def generate_stripplots(df: pd.DataFrame):
         print("No numerical columns found in the DataFrame.")
         return None  # Return None if no numerical data
     
-    fig = px.strip(df, x=numerical_columns, orientation='h',stripmode='overlay')
+    fig = px.strip(df, x=numerical_columns, orientation='h')
     
     return fig

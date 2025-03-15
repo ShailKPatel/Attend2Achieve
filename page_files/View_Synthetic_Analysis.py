@@ -251,4 +251,4 @@ for i in range(1,num_subjects+1):
 
 stripplot_fig = gg.generate_stripplots(merged_df)
 
-st.plotly_chart(stripplot_fig)
+st.plotly_chart(stripplot_fig, use_container_width=True)
