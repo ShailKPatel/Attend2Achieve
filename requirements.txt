@@ -3,5 +3,6 @@ pandas==2.2.3
 Pillow==11.1.0
 plotly==6.0.0
 scipy==1.15.2
+statsmodels==0.14.4
 streamlit==1.41.1
 openpyxl==3.1.2
