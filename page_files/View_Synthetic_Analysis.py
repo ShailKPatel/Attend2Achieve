@@ -41,7 +41,7 @@ sub4_name = "Environmental Science"
 sub4_type = "Others"
 sub4_file = "sample_files/Sample4_ES.xlsx"
 
-st.title("Analysis of Provided Subjects")
+st.title("Analysis of Sample Subjects")
 st.image(institute_logo)
 
 st.header(f"{institute_name}")
@@ -251,4 +251,4 @@ for i in range(1,num_subjects+1):
 
 stripplot_fig = gg.generate_stripplots(merged_df)
 
-st.plotly_chart(stripplot_fig, use_container_width=True)
+st.plotly_chart(stripplot_fig)
