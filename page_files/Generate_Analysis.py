@@ -68,7 +68,8 @@ with st.container(border=True):
     all_valid = institute_name and name and institute_logo
 
     # Generate Synthetic Analysis Button
-    if st.button("Generate Synthetic Analysis"):
+    if st.button("Generate Synthetic Analysis", icon='🤖'):
+        st.session_state.next_btn = True
 
         # Synthetic Data
 
