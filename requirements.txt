@@ -4,3 +4,4 @@ Pillow==11.1.0
 plotly==6.0.0
 scipy==1.15.2
 streamlit==1.41.1
+openpyxl==3.1.2
