@@ -52,3 +52,4 @@
 ## 👥 Team Members
 
 * Dev S Panchal
+* Shail K Patel
