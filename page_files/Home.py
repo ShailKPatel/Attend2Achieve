@@ -33,8 +33,8 @@ with st.container(border=True):
 with st.container(border=True):
     "# 🌏 In an Alternate Universe..."
     # Page Title
-    "#####📊 BeyondTheMarks - Exposing Bias, Elevating Education"
-    "######🔍 A Different Lens on Bias and Teaching Impact"
+    "#### 📊 BeyondTheMarks - Exposing Bias, Elevating Education"
+    "##### 🔍 A Different Lens on Bias and Teaching Impact"
     st.write(
         "Similar to *Attendance for Impact*, *BeyondTheMarks* dives into academic performance but with a sharper focus on *bias detection and teaching effectiveness.* "
         "By leveraging *statistical methods and machine learning, it evaluates whether **gender or religion* influence grades unfairly, assesses *professor effectiveness using ANOVA*, "
