@@ -36,7 +36,7 @@
 * Python 🐍 – Core programming language
 * Streamlit 🎛️ – UI for data interaction
 * NumPy 🔢 & Pandas 📊 – Data handling
-* Matplotlib 📈 & Seaborn 🎨 – Visualization
+* Pyplot 📈 & Seaborn 🎨 – Visualization and interactive Graph   
 * Scikit-Learn 🤖 & SciPy 🔬 – Machine learning & statistical modeling
 * io & PIL 🖼️ – File handling & image processing
 
