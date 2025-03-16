@@ -10,12 +10,12 @@ with st.container(border=True):
     "## Made By : "
 
     "### **Panchal Dev**"
-    st.link_button(" LinkedIn", "https://www.linkedin.com/in/dev-panchal-connect/", icon="🔗", use_container_width=True)
-    st.link_button("GitHub", "https://github.com/DevPanchal2005", icon="🔗", use_container_width=True)
+    st.link_button("Connect on LinkedIn", "https://www.linkedin.com/in/dev-panchal-connect/", icon="🔗", use_container_width=True)
+    st.link_button("Explore His GitHub", "https://github.com/DevPanchal2005", icon="🐙", use_container_width=True)
 
     "### **Shail K Patel**"
-    st.link_button("🔗 Stalk Him on LinkedIn", "https://www.linkedin.com/in/shail-k-patel/")
-    st.link_button("🐙 Investigate His GitHub", "https://github.com/ShailKPatel")
+    st.link_button("Stalk Him on LinkedIn", "https://www.linkedin.com/in/shail-k-patel/", icon="🔗", use_container_width=True)
+    st.link_button("Investigate His GitHub", "https://github.com/ShailKPatel", icon="🐙", use_container_width=True)
 
 with st.container(border=True):
     "## GitHub Repository :"

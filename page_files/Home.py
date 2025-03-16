@@ -37,7 +37,7 @@ with st.container(border=True):
     "##### 🔍 A Different Lens on Bias and Teaching Impact"
     st.write(
         "Similar to *Attendance for Impact*, *BeyondTheMarks* dives into academic performance but with a sharper focus on *bias detection and teaching effectiveness.* "
-        "By leveraging *statistical methods and machine learning, it evaluates whether **gender or religion* influence grades unfairly, assesses *professor effectiveness using ANOVA*, "
+        "By leveraging *statistical methods and machine learning*, it evaluates whether *gender or religion* influence grades unfairly, assesses *professor effectiveness using ANOVA*, "
         "and uncovers hidden *subject correlations* to predict student success. This isn’t just another analytics dashboard—it’s a step towards a *fairer, more accountable education system.*"
     )
     
