@@ -1,5 +1,7 @@
 [theme]
-primaryColor = "#eca400"  # Neon Aqua for highlights & buttons (futuristic feel)
-backgroundColor = "#006992"  # Deep Navy Blue for a modern dark mode
-secondaryBackgroundColor = "#001d4a"  # Darker Blue for sidebar & panels
-textColor = "#ffffff"  # Soft White for readability without harsh contrast
+base = "dark"
+primaryColor = "#00c853"  # Bright Green for highlights & buttons
+backgroundColor = "#0a0f0d"  # Very Dark Greenish Black for the main background
+secondaryBackgroundColor = "#003d33"  # Deep Teal-Green for sidebar & panels
+textColor = "#e0f2f1"  # Soft Cyan-White for readability
+font = "sans serif"

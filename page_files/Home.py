@@ -4,12 +4,24 @@ import streamlit as st
 image = "resources/logo.png"
 st.logo(image, size='large')
 
-# Image
-st.image(image, use_container_width=True)
+with st.container():
+    """ # 📚 Attendance for Impact 🎯
+    A smart analytical tool to correlate subject-wise attendance with academic performance, revealing hidden trends and guiding actionable improvements.
 
-with st.container(border=True):
-    """ # What is Attendance for Impact ? 
-    This is an app designed to help institutions refine their policies and gain deeper insights into academic performance, revealing hidden patterns through thoughtful analysis and guidance."""
+    ## 🔍 Overview   
+    Attendance for Impact analyzes the relationship between subject-wise attendance and theory/practical marks. It uses statistical methods like skewness, IQR, standard deviation, and mean-median analysis to explain performance patterns and suggest data-driven improvements. Visual dashboards make insights clear and actionable for institutions.
+
+    ## ✨ Key Features
+    ✔ Subject-wise Correlation Analysis: Attendance vs. marks (theory + practical).   
+    ✔ Statistical Insight: Uses skewness, standard deviation, IQR, and mean-median gaps.   
+    ✔ Diagnostic Reports: Recommends improvements through per-subject analysis.   
+    ✔ Visualizations: Includes histograms, correlation heatmaps, and distribution plots.   
+    ✔ Academic Insight Dashboard: Summarizes performance trends across all subjects.   
+    ✔ Tech Stack: Python, Pandas, NumPy, Matplotlib, Seaborn, Streamlit.   
+    
+    
+    ## 📌 Explore the Tool
+    """
     # View Research Paper Button
 
 with st.container(border=True):
