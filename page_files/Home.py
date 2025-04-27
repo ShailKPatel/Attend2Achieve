@@ -5,11 +5,11 @@ image = "resources/logo.png"
 st.logo(image, size='large')
 
 with st.container():
-    """ # 📚 Attendance for Impact 🎯
+    """ # 📚 Attend2Achieve 🎯
     A smart analytical tool to correlate subject-wise attendance with academic performance, revealing hidden trends and guiding actionable improvements.
 
     ## 🔍 Overview   
-    Attendance for Impact analyzes the relationship between subject-wise attendance and theory/practical marks. It uses statistical methods like skewness, IQR, standard deviation, and mean-median analysis to explain performance patterns and suggest data-driven improvements. Visual dashboards make insights clear and actionable for institutions.
+    Attend2Achieve analyzes the relationship between subject-wise attendance and theory/practical marks. It uses statistical methods like skewness, IQR, standard deviation, and mean-median analysis to explain performance patterns and suggest data-driven improvements. Visual dashboards make insights clear and actionable for institutions.
 
     ## ✨ Key Features
     ✔ Subject-wise Correlation Analysis: Attendance vs. marks (theory + practical).   
@@ -17,7 +17,7 @@ with st.container():
     ✔ Diagnostic Reports: Recommends improvements through per-subject analysis.   
     ✔ Visualizations: Includes histograms, correlation heatmaps, and distribution plots.   
     ✔ Academic Insight Dashboard: Summarizes performance trends across all subjects.   
-    ✔ Tech Stack: Python, Pandas, NumPy, Matplotlib, Seaborn, Streamlit.   
+    ✔ Tech Stack: Python, Pandas, NumPy, Pyplot, Streamlit.   
     
     
     ## 📌 Explore the Tool
@@ -48,7 +48,7 @@ with st.container(border=True):
     "#### 📊 BeyondTheMarks - Exposing Bias, Elevating Education"
     "##### 🔍 A Different Lens on Bias and Teaching Impact"
     st.write(
-        "Similar to *Attendance for Impact*, *BeyondTheMarks* dives into academic performance but with a sharper focus on *bias detection and teaching effectiveness.* "
+        "Similar to *Attend2Achieve*, *BeyondTheMarks* dives into academic performance but with a sharper focus on *bias detection and teaching effectiveness.* "
         "By leveraging *statistical methods and machine learning*, it evaluates whether *gender or religion* influence grades unfairly, assesses *professor effectiveness using ANOVA*, "
         "and uncovers hidden *subject correlations* to predict student success. This isn’t just another analytics dashboard—it’s a step towards a *fairer, more accountable education system.*"
     )

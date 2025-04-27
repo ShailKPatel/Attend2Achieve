@@ -48,7 +48,7 @@ st.header(f"{institute_name}")
 st.subheader(f"Institute Type: {institute_type}")
 st.subheader(f"Prepared By: {name}")
 
-st.subheader("Made using :rainbow[Attendance For Impact]")
+st.subheader("Made using :rainbow[Attend2Achieve]")
 
 st.divider()
 
