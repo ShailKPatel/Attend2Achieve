@@ -18,7 +18,7 @@ st.logo("resources/logo.png", icon_image="resources/logo.png",size='large')
 
 # Synthetic Data
 
-name = "Panchal Dev"
+name = "John Doe"
 institute_name = "ABC Institute"
 institute_type = "College"
 institute_logo = "sample_files/Institute_logo.jpg"
@@ -217,23 +217,6 @@ for i in range(1,num_subjects+1):
             st.write(f"Inter Quartile Range of Practical: {iqr_practical}")
             iqa.analyze_iqr_practical(iqr_practical, institute_type)
 
-        # * Z-Score Analysis
-        # st.subheader("Z-Score Analysis")
-
-        # if iv.has_attendance(df):
-        #     z_score_attendance = sa.calculate_z_score(iv.get_attendance(df))
-        #     st.write(f"Z-Score of Attendance: {z_score_attendance}")
-        #     zsa.analyze_z_score_attendance(z_score_attendance, institute_type)
-
-        # if iv.has_theory(df):
-        #     z_score_theory = sa.calculate_z_score(iv.get_theory(df))
-        #     st.write(f"Z-Score of Theory: {z_score_theory}")
-        #     zsa.analyze_z_score_theory(z_score_theory, institute_type)
-
-        # if iv.has_practical(df):
-        #     z_score_practical = sa.calculate_z_score(iv.get_practical(df))
-        #     st.write(f"Z-Score of Practical: {z_score_practical}")
-        #     zsa.analyze_z_score_practical(z_score_practical, institute_type)
 
         st.divider()
 
