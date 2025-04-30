@@ -14,7 +14,7 @@ credits = st.Page("page_files/Credits.py", icon='📇')
 pg = st.navigation({
     "Home": [home],
     "Analysis": [generate_analysis, synthetic_analysis],
-    "Miscellaneous ": [feedback, credits]
+    "Feedback & Credits ": [feedback, credits]
 })
 
 pg.run()
