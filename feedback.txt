@@ -1,5 +1,0 @@
-"Attendance-to-marks insights are spot-on. Would love an export option to save reports as PDFs!"
-"The statistical reports are a game-changer for our faculty. Any chance we could filter by semester?"
-"Love how clean and easy the interface is! A mobile app version would make it even better."
-"The heatmap visuals make trends pop! Could you add a way to compare multiple subjects side-by-side?"
-"The correlation dashboards are super intuitive! Can you add a dark mode for late-night analysis sessions?"

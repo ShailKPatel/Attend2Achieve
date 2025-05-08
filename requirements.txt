@@ -6,3 +6,4 @@ scipy==1.15.2
 statsmodels==0.14.4
 streamlit==1.41.1
 openpyxl==3.1.2
+wordcloud==1.9.4

@@ -1,62 +1,138 @@
 import streamlit as st
+from wordcloud import WordCloud, STOPWORDS
+import matplotlib.pyplot as plt
+import json
 import os
+from collections import Counter, deque
+import re
+import numpy as np
 
-FEEDBACK_FILE = "feedback.txt"
-MAX_FEEDBACKS = 5
+# File Paths
+REVIEW_PATH = "reviews/recent_reviews.json"
+WORD_COUNT_PATH = "reviews/word_count.json"
+REVIEW_LIMIT = 6
 
-class CustomDeque:
-    def __init__(self, maxlen):
-        self.maxlen = maxlen
-        self.data = []
+# Expanded filter words to prevent "lol" variations and vandalism
+FILTER_WORDS = {
+    "lol", "lolis", "laughing", "out", "loud",  # Cover "laughing out loud" and variations
+    "haha", "hehe", "lmao", "rofl"  # Other informal laughter terms
+}
 
-    def append(self, item):
-        if len(self.data) >= self.maxlen:
-            self.data.pop(0)  # Remove the oldest feedback (FIFO)
-        self.data.append(item)
+# Load reviews
+def load_reviews():
+    if os.path.exists(REVIEW_PATH):
+        with open(REVIEW_PATH, "r", encoding="utf-8") as file:
+            return deque(json.load(file), maxlen=REVIEW_LIMIT)
+    return deque(maxlen=REVIEW_LIMIT)
 
-    def __len__(self):
-        return len(self.data)
+# Save reviews
+def save_reviews(reviews):
+    with open(REVIEW_PATH, "w", encoding="utf-8") as file:
+        json.dump(list(reviews), file)
 
-    def __getitem__(self, index):
-        return self.data[index]
+# Load word count
+def load_word_count():
+    if os.path.exists(WORD_COUNT_PATH):
+        with open(WORD_COUNT_PATH, "r", encoding="utf-8") as file:
+            return Counter(json.load(file))
+    return Counter()
 
-    def __iter__(self):
-        return iter(self.data)
+# Save word count
+def save_word_count(counter):
+    with open(WORD_COUNT_PATH, "w", encoding="utf-8") as file:
+        json.dump(dict(counter), file)
 
-def load_feedbacks():
-    """Load feedbacks from the file into a custom deque."""
-    feedbacks = CustomDeque(maxlen=MAX_FEEDBACKS)
-    if os.path.exists(FEEDBACK_FILE):
-        with open(FEEDBACK_FILE, "r", encoding="utf-8") as f:
-            for line in f:
-                feedbacks.append(line.strip())
-    return feedbacks
+# Filter words: stop words, "lol" variations, and vandalism
+def should_count_word(word):
+    # Use regex to catch "lol" with special characters (e.g., "lol!")
+    if re.search(r'l+o+l+[!@#$%^&*]*', word.lower()):
+        return False
+    # Check against stop words and filter words
+    return (word.lower() not in STOPWORDS and 
+            word.lower() not in FILTER_WORDS and 
+            not any(fw in word.lower() for fw in FILTER_WORDS))
 
-def save_feedbacks(feedbacks):
-    """Save the feedbacks to the file."""
-    with open(FEEDBACK_FILE, "w", encoding="utf-8") as f:
-        for feedback in feedbacks:
-            f.write(feedback.replace("\n", " ") + "\n")
+# Check if review contains "lol" or filtered words
+def contains_filtered_words(review):
+    words = review.split()
+    for word in words:
+        # Check for "lol" variations with regex
+        if re.search(r'l+o+l+[!@#$%^&*]*', word.lower()):
+            return True
+        # Check for other filter words
+        if any(fw in word.lower() for fw in FILTER_WORDS) or word.lower() in FILTER_WORDS:
+            return True
+    return False
 
+# Initialize data
+review_queue = load_reviews()
+word_count = load_word_count()
+
+# Streamlit UI
 st.title("📝 Feedbacks")
-feedbacks = load_feedbacks()
 
-user_feedback = st.text_area("Enter your feedback:").replace("\n", " ")
-if st.button("Submit Feedback"):
-    if user_feedback.strip():
-        feedbacks.append(user_feedback.strip())
-        save_feedbacks(feedbacks)
-    else:
-        st.warning("Please enter a valid feedback.")
-
-st.header("Recent Feedbacks")
-if feedbacks:
-    num_feedbacks = len(feedbacks)
-    for i in range(0, num_feedbacks, 3):
-        cols = st.columns(min(3, num_feedbacks - i),border=True)
-        for j in range(min(3, num_feedbacks - i)):
-            with cols[j]:
-                st.write('✍️')
-                st.write(feedbacks[i + j])
+st.subheader("📜 Recent Reviews")
+if review_queue:
+    for review in review_queue:
+        st.write(f"✍️ {review}")
 else:
-    st.write("No feedbacks yet. Be the first to leave a feedback!")
+    st.write("No reviews yet. Be the first to leave your mark! ✨")
+
+st.subheader("📊 Word Cloud")
+if word_count:
+    # Filter word_count to remove stop words and filtered words
+    filtered_word_count = Counter()
+    for word, freq in word_count.items():
+        if should_count_word(word):
+            filtered_word_count[word.lower()] += freq
+
+    if filtered_word_count:
+        # Custom color function for a cohesive look (shades of blue)
+        def blue_color_func(word, font_size, position, orientation, random_state=None, **kwargs):
+            return f"hsl(210, 70%, {np.random.randint(40, 80)}%)"
+
+        # Generate word cloud with improved aesthetics
+        wordcloud = WordCloud(
+            width=800,
+            height=400,
+            background_color="white",  # Lighter background for clarity
+            max_words=50,  # Limit to avoid clutter
+            min_font_size=12,  # Ensure readability
+            scale=3,  # Higher resolution
+            stopwords=STOPWORDS.union(FILTER_WORDS),  # Double-check stop words
+            color_func=blue_color_func  # Apply custom colors
+        ).generate_from_frequencies(filtered_word_count)
+
+        # Display word cloud
+        fig, ax = plt.subplots(figsize=(10, 5))
+        ax.imshow(wordcloud, interpolation="bilinear")
+        ax.axis("off")
+        st.pyplot(fig)
+    else:
+        st.write("No valid words to display in the word cloud after filtering.")
+else:
+    st.write("No words to display in the word cloud yet. Submit a review!")
+
+# Submit new review
+user_review = st.text_area("Got a complaint or suggestion? Drop it here", "")
+if st.button("Submit Review"):
+    if user_review:
+        # Check if the review contains filtered words
+        if not contains_filtered_words(user_review):
+            # Only save and process the review if it doesn't contain filtered words
+            review_queue.append(user_review)
+            save_reviews(review_queue)
+
+            # Process words for word count: remove punctuation, normalize case
+            words = re.findall(r'\b\w+\b', user_review.lower())
+            for word in words:
+                if should_count_word(word):
+                    word_count[word] += 1
+            save_word_count(word_count)
+
+        # Always show balloons and thanks message, even if review isn't saved
+        st.balloons()
+        st.success("Review submitted! Thanks for sharing your thoughts!")
+        st.rerun()
+    else:
+        st.warning("Please write something before submitting.")
